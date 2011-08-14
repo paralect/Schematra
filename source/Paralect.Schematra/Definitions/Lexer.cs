@@ -1,19 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using Irony.Parsing;
 using Paralect.Schematra.Definitions;
 using Paralect.Schematra.Exceptions;
 
-namespace Paralect.Schematra
+namespace Paralect.Schematra.Definitions
 {
-    public class Context
-    {
-        public TypeContext TypeContext { get; set; }
-        public List<String> Usings { get; set; }
-        public String Namespace { get; set; }
-    }
-
     public class Lexer
     {
         /// <summary>
@@ -21,18 +13,13 @@ namespace Paralect.Schematra
         /// </summary>
         private ParseTreeNode _currentNode;
 
-        public TypeContext Build(String[] filePaths)
+        /// <summary>
+        /// Compile specified files
+        /// </summary>
+        public CompilationDefinition BuildCompilationDefinition(String[] filePaths)
         {
             if (filePaths.Length <= 0)
                 throw new SchematraException("Files were not specified");
-
-            var typeContext = new TypeContext();
-
-            var context = new Context()
-            {
-                TypeContext = typeContext,
-                Usings = new List<String>()
-            };
 
             foreach (var filePath in filePaths)
             {
@@ -40,8 +27,11 @@ namespace Paralect.Schematra
 
                 try
                 {
-                    ParseUnit(tree, context);
-                    return typeContext;
+                    var compilation = new CompilationDefinition();
+
+                    ParseUnit(tree, compilation);
+
+                    return compilation;
                 }
                 catch (Exception ex)
                 {
@@ -54,26 +44,36 @@ namespace Paralect.Schematra
                 }
             }
 
-            throw new SchematraException("Files were not specified");            
+            throw new SchematraException("Files were not specified");
         }
 
-        private void ParseUnit(ParseTree tree, Context context)
+        /// <summary>
+        /// Parsing of unit nonterm
+        /// </summary>
+        private void ParseUnit(ParseTree tree, CompilationDefinition compilation)
         {
+            var unitDefinition = new UnitDefinition();
+
             foreach (var child in tree.Root.ChildNodes)
             {
                 switch (child.Term.Name)
                 {
                     case SchematraGrammer.term_defs:
-                        ParseDefs(child, context, "");
+                        ParseDefs(child, unitDefinition, "");
                         break;
                     case SchematraGrammer.term_using_defs:
-                        ParseUsingDefs(child, context);
+                        ParseUsingDefs(child, unitDefinition);
                         break;
                 }
             }
+
+            compilation.Units.Add(unitDefinition);            
         }
 
-        private void ParseUsingDefs(ParseTreeNode node, Context context)
+        /// <summary>
+        /// Parsing of unit-defs nonterm
+        /// </summary>
+        private void ParseUsingDefs(ParseTreeNode node, UnitDefinition unitDefinition)
         {
             _currentNode = node;
 
@@ -82,13 +82,16 @@ namespace Paralect.Schematra
                 switch (child.Term.Name)
                 {
                     case SchematraGrammer.term_using_def:
-                        ParseUsingDef(child, context);
+                        ParseUsingDef(child, unitDefinition);
                         break;
                 }
-            }            
+            }
         }
 
-        private void ParseUsingDef(ParseTreeNode node, Context context)
+        /// <summary>
+        /// Parsing of using-def nonterm
+        /// </summary>
+        private void ParseUsingDef(ParseTreeNode node, UnitDefinition unitDefinition)
         {
             _currentNode = node;
 
@@ -97,13 +100,16 @@ namespace Paralect.Schematra
                 switch (child.Term.Name)
                 {
                     case SchematraGrammer.term_using_def_name:
-                        context.Usings.Add(child.Token.ValueString);
+                        unitDefinition.Usings.Add(child.Token.ValueString);
                         break;
                 }
-            }                
+            }            
         }
 
-        private void ParseDefs(ParseTreeNode node, Context context, string space)
+        /// <summary>
+        /// Parsing of defs nonterm
+        /// </summary>
+        private void ParseDefs(ParseTreeNode node, UnitDefinition unitDefinition, String space)
         {
             _currentNode = node;
 
@@ -115,13 +121,16 @@ namespace Paralect.Schematra
                 switch (child.Term.Name)
                 {
                     case SchematraGrammer.term_def:
-                        ParseDef(child, context, space);
+                        ParseDef(child, unitDefinition, space);
                         break;
                 }
-            }            
+            }
         }
 
-        private void ParseDef(ParseTreeNode node, Context context, string space)
+        /// <summary>
+        /// Parsing of def nonterm
+        /// </summary>
+        private void ParseDef(ParseTreeNode node, UnitDefinition unitDefinition, String space)
         {
             _currentNode = node;
 
@@ -130,16 +139,19 @@ namespace Paralect.Schematra
                 switch (child.Term.Name)
                 {
                     case SchematraGrammer.term_schema_def:
-                        ParseSchemaDef(child, context, space);
+                        ParseSchemaDef(child, unitDefinition, space);
                         break;
                     case SchematraGrammer.term_namespace_def:
-                        ParseNamespaceDef(child, context, space);
+                        ParseNamespaceDef(child, unitDefinition, space);
                         break;
                 }
             }
         }
 
-        private void ParseNamespaceDef(ParseTreeNode node, Context context, string space)
+        /// <summary>
+        /// Parsing of namespace-def nonterm
+        /// </summary>
+        private void ParseNamespaceDef(ParseTreeNode node, UnitDefinition unitDefinition, String space)
         {
             _currentNode = node;
 
@@ -153,167 +165,41 @@ namespace Paralect.Schematra
                         namespaceText = child.Token.ValueString;
                         break;
                     case SchematraGrammer.term_defs:
-                        ParseDefs(child, context, Utils.ConcatNamespaces(space, namespaceText));
+                        ParseDefs(child, unitDefinition, Utils.ConcatNamespaces(space, namespaceText));
                         break;
                 }
-            }            
+            }
         }
 
-        private void ParseSchemaDef(ParseTreeNode node, Context context, string space)
+        /// <summary>
+        /// Parsing of schema-def nonterm
+        /// </summary>
+        private void ParseSchemaDef(ParseTreeNode node, UnitDefinition unitDefinition, String space)
         {
             _currentNode = node;
 
-            var recordBuilder = new RecordTypeBuilder(context.TypeContext);
+            var schemadef = new RecordDefinition();
 
             foreach (var child in node.ChildNodes)
             {
                 switch (child.Term.Name)
                 {
                     case SchematraGrammer.term_schema_def_name:
-                        recordBuilder.SetName(child.Token.Text, space);
+                        schemadef.Name = child.Token.Text;
+                        schemadef.Namespace = space;
                         break;
 
                     case SchematraGrammer.term_schema_def_options:
-                        ParseSchemaDefOptions(child, recordBuilder);
+                        ParseSchemaDefOptions(child, schemadef);
                         break;
 
                     case SchematraGrammer.term_schema_def_body:
-                        ParseSchemaDefBody(child, context, recordBuilder);
+                        ParseSchemaDefBody(child, schemadef);
                         break;
                 }
             }
 
-            context.TypeContext.AddType(recordBuilder.Create());
-        }
-
-        private void ParseSchemaDefBody(ParseTreeNode node, Context context, RecordTypeBuilder recordBuilder)
-        {
-            _currentNode = node;
-
-            foreach (var child in node.ChildNodes)
-            {
-                switch (child.Term.Name)
-                {
-                    case SchematraGrammer.term_field:
-                        ParseField(child, recordBuilder);
-                        break;
-                }
-            }            
-        }
-
-        private void ParseSchemaDefOptions(ParseTreeNode node, RecordTypeBuilder recordBuilder)
-        {
-            _currentNode = node;
-
-            if (node.ChildNodes.Count <= 0)
-                return;
-
-            foreach (var child in node.ChildNodes)
-            {
-                switch (child.Term.Name)
-                {
-                    case SchematraGrammer.term_schema_def_option:
-                        ParseSchemaDefOption(child, recordBuilder);
-                        break;
-                }
-            }            
-        }
-
-        private void ParseSchemaDefOption(ParseTreeNode node, RecordTypeBuilder recordBuilder)
-        {
-            _currentNode = node;
-
-            foreach (var child in node.ChildNodes)
-            {
-                switch (child.Term.Name)
-                {
-                    case SchematraGrammer.term_schema_def_tagged_option:
-                        ParseSchemaDefTaggedOption(child, recordBuilder);
-                        break;
-                    case SchematraGrammer.term_schema_def_extends_option:
-                        ParseSchemaDefExtendsOption(child, recordBuilder);
-                        break;
-                }
-            }
-        }
-
-        private void ParseSchemaDefExtendsOption(ParseTreeNode node, RecordTypeBuilder recordBuilder)
-        {
-            _currentNode = node;
-
-            foreach (var child in node.ChildNodes)
-            {
-                switch (child.Term.Name)
-                {
-                    case SchematraGrammer.term_schema_def_extends:
-                        recordBuilder.SetBaseType(child.Token.ValueString);
-                        break;
-                }
-            }            
-        }
-
-        private void ParseSchemaDefTaggedOption(ParseTreeNode node, RecordTypeBuilder recordBuilder)
-        {
-            _currentNode = node;
-
-            foreach (var child in node.ChildNodes)
-            {
-                switch (child.Term.Name)
-                {
-                    case SchematraGrammer.term_schema_def_tag:
-
-                        var guidText = child.Token.ValueString;
-                        recordBuilder.SetTag(Guid.Parse(guidText));
-                        break;
-                }
-            }            
-        }
-
-        /// <summary>
-        /// Parsing of field nonterm
-        /// </summary>
-        private void ParseField(ParseTreeNode node, RecordTypeBuilder recordBuilder)
-        {
-            _currentNode = node;
-
-            Int32 index = 0;
-            FieldQualifier qualifier = FieldQualifier.Optional;
-            String typeName = "";
-            String name = "";
-
-            foreach (var child in node.ChildNodes)
-            {
-                if (child.Term == null || child.Term.Name == null)
-                    continue;
-
-                switch (child.Term.Name)
-                {
-                    case SchematraGrammer.term_field_index:
-                        index = Int32.Parse(child.Token.Value.ToString());
-                        break;
-
-                    case SchematraGrammer.term_field_qualifier:
-                        qualifier = GetQualifierByString(child.ChildNodes[0].Term.Name);
-                        break;
-
-                    case SchematraGrammer.term_field_nullable:
-                        //                        fieldDefinition.Nullable = child.ChildNodes.Count > 0;
-                        break;
-
-                    case SchematraGrammer.term_field_schema:
-                        typeName = child.Token.Value.ToString();
-                        break;
-
-                    case SchematraGrammer.term_field_name:
-                        name = child.Token.Value.ToString();
-                        break;
-
-                    case SchematraGrammer.term_field_init_value:
-                        break;
-                }
-            }
-
-            recordBuilder.AddField(index, name, typeName, qualifier);
+            unitDefinition.TypeDefinitions.Add(schemadef);
         }
 
         /// <summary>
@@ -329,29 +215,131 @@ namespace Paralect.Schematra
                 {
                     case SchematraGrammer.term_field:
                         var fieldDefinition = new FieldDefinition();
-                        //ParseField(child, fieldDefinition);
+                        ParseField(child, fieldDefinition);
                         schemadef.FieldDefinitions.Add(fieldDefinition);
                         break;
                 }
             }
         }
 
+        /// <summary>
+        /// Parsing of field nonterm
+        /// </summary>
+        private void ParseField(ParseTreeNode node, FieldDefinition fieldDefinition)
+        {
+            _currentNode = node;
 
+            foreach (var child in node.ChildNodes)
+            {
+                if (child.Term == null || child.Term.Name == null)
+                    continue;
+
+                switch (child.Term.Name)
+                {
+                    case SchematraGrammer.term_field_index:
+                        fieldDefinition.Index = Int32.Parse(child.Token.Value.ToString());
+                        break;
+
+                    case SchematraGrammer.term_field_qualifier:
+                        fieldDefinition.SetQualifierByString(child.ChildNodes[0].Term.Name);
+                        break;
+
+                    case SchematraGrammer.term_field_nullable:
+                        fieldDefinition.Nullable = child.ChildNodes.Count > 0;
+                        break;
+
+                    case SchematraGrammer.term_field_schema:
+                        fieldDefinition.TypeName = child.Token.Value.ToString();
+                        break;
+
+                    case SchematraGrammer.term_field_name:
+                        fieldDefinition.Name = child.Token.Value.ToString();
+                        break;
+
+                    case SchematraGrammer.term_field_init_value:
+                        break;
+                }
+            }            
+        }
 
         /// <summary>
-        /// Set qualifier by string 
+        /// Parsing of schema-def-options nonterm
         /// </summary>
-        public FieldQualifier GetQualifierByString(String qualifier)
+        private void ParseSchemaDefOptions(ParseTreeNode node, RecordDefinition schemadef)
         {
-            switch (qualifier)
-            {
-                case "optional": return FieldQualifier.Optional;
-                case "required": return FieldQualifier.Required;
-                case "repeated": return FieldQualifier.Repeated;
-                case "historic": return FieldQualifier.Historic;
-            }
+            _currentNode = node;
 
-            throw new SchematraException("Missed field qualifier, should be \"optional\" or \"required\" but \"{0}\" was found", qualifier);
+            if (node.ChildNodes.Count <= 0)
+                return;
+
+            foreach (var child in node.ChildNodes)
+            {
+                switch (child.Term.Name)
+                {
+                    case SchematraGrammer.term_schema_def_option:
+                        ParseSchemaDefOption(child, schemadef);
+                        break;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Parsing of schema-def-option nonterm
+        /// </summary>
+        private void ParseSchemaDefOption(ParseTreeNode node, RecordDefinition schemadef)
+        {
+            _currentNode = node;
+
+            foreach (var child in node.ChildNodes)
+            {
+                switch (child.Term.Name)
+                {
+                    case SchematraGrammer.term_schema_def_tagged_option:
+                        ParseSchemaDefTaggedOption(child, schemadef);
+                        break;
+                    case SchematraGrammer.term_schema_def_extends_option:
+                        ParseSchemaDefExtendsOption(child, schemadef);
+                        break;
+                }
+            }            
+        }
+
+        /// <summary>
+        /// Parsing of schema-def-extends-option nonterm
+        /// </summary>
+        private void ParseSchemaDefExtendsOption(ParseTreeNode node, RecordDefinition schemadef)
+        {
+            _currentNode = node;
+
+            foreach (var child in node.ChildNodes)
+            {
+                switch (child.Term.Name)
+                {
+                    case SchematraGrammer.term_schema_def_extends:
+                        schemadef.Extends = child.Token.ValueString;
+                        break;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Parsing of schema-def-tagged-option nonterm
+        /// </summary>
+        private void ParseSchemaDefTaggedOption(ParseTreeNode node, RecordDefinition schemadef)
+        {
+            _currentNode = node;
+
+            foreach (var child in node.ChildNodes)
+            {
+                switch (child.Term.Name)
+                {
+                    case SchematraGrammer.term_schema_def_tag:
+
+                        var guidText = child.Token.ValueString;
+                        schemadef.Tag = Guid.Parse(guidText);
+                        break;
+                }
+            }
         }
 
         /// <summary>

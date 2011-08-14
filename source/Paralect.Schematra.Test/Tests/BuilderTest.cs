@@ -82,8 +82,8 @@ namespace Paralect.Schematra.Test.Tests
             {
                 context.DefineRecord(builder => builder
                     .SetName("SomeNamespace.First")
-                    .AddField(1, "Name", "SomeNamespace.First")
-                    .AddField(1, "Year", "SomeNamespace.First")
+                    .AddField(1, "Name", "SomeNamespace.First", FieldQualifier.Optional)
+                    .AddField(1, "Year", "SomeNamespace.First", FieldQualifier.Optional)
                 );
             });
         }
@@ -97,8 +97,8 @@ namespace Paralect.Schematra.Test.Tests
             {
                 context.DefineRecord(builder => builder
                     .SetName("SomeNamespace.First")
-                    .AddField(1, "Name", "SomeNamespace.First")
-                    .AddField(2, "Name", "SomeNamespace.First")
+                    .AddField(1, "Name", "SomeNamespace.First", FieldQualifier.Optional)
+                    .AddField(2, "Name", "SomeNamespace.First", FieldQualifier.Optional)
                 );
             });
         }
@@ -112,8 +112,8 @@ namespace Paralect.Schematra.Test.Tests
             context.DefineRecord(builder => builder
                 .SetName("SomeNamespace.First")
                 .SetTag(tag)
-                .AddField(1, "Name", "SomeNamespace.First")
-                .AddField(2, "Year", "SomeNamespace.First")
+                .AddField(1, "Name", "SomeNamespace.First", FieldQualifier.Optional)
+                .AddField(2, "Year", "SomeNamespace.First", FieldQualifier.Optional)
             );
 
             context.Build();

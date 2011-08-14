@@ -79,7 +79,7 @@ namespace Paralect.Schematra
 
             foreach (var fieldInfo in _fields)
             {
-                recordType.AddFieldInternal(fieldInfo.Index, fieldInfo.Name, fieldInfo.TypeFullName);
+                recordType.AddFieldInternal(fieldInfo.Index, fieldInfo.Name, fieldInfo.TypeFullName, fieldInfo.Qualifier);
             }
 
             return recordType;
@@ -125,7 +125,7 @@ namespace Paralect.Schematra
             return _fieldsByIndex[index];
         }
 
-        protected void AddFieldInternal(Int32 index, String name, String type)
+        protected void AddFieldInternal(Int32 index, String name, String type, FieldQualifier qualifier)
         {
             if (_fieldsByName.ContainsKey(name))
                 throw new DuplicateFieldNameException("Duplicate field {0} found for record {1}", name, FullName);
@@ -133,7 +133,7 @@ namespace Paralect.Schematra
             if (_fieldsByIndex.ContainsKey(index))
                 throw new DuplicateFieldIndexException("Duplicate field index {0} found for record {1}", index, FullName);
 
-            var fieldInfo = new FieldInfo(_typeContext, index, name, type);
+            var fieldInfo = new FieldInfo(_typeContext, index, name, type, qualifier);
 
             _fields.Add(fieldInfo);
             _fieldsByName[fieldInfo.Name] = fieldInfo;

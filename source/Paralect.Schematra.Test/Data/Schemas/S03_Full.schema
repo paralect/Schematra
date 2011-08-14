@@ -2,7 +2,7 @@
 using Hello.Bye;
 using Hello.Bye.Goodbye;
 
-schema FirstSchema tagged "8170cb805b92441eb198fb71f343b717" extends SecondSchema
+record FirstSchema tagged "8170cb805b92441eb198fb71f343b717" extends SecondSchema
 {
 	1: optional Int32 Year = 2011;
 	2: required String Name = "Hello";
@@ -10,7 +10,7 @@ schema FirstSchema tagged "8170cb805b92441eb198fb71f343b717" extends SecondSchem
 
 namespace Topmost.Namespace
 {
-	schema SecondSchema tagged "cd545b5dc832441eb198fb71f3436cde"
+	record SecondSchema tagged "cd545b5dc832441eb198fb71f3436cde"
 	{
 		1: optional Int32 Year = 2011;
 		2: optional Int32 Count = 12;
@@ -19,7 +19,7 @@ namespace Topmost.Namespace
 
 	namespace Inner.Namespace	
 	{
-		schema ThirdSchema tagged "c4d6d8d8d8d8d8d8d8d8d6834343cd32"
+		record ThirdSchema tagged "c4d6d8d8d8d8d8d8d8d8d6834343cd32"
 		{
 			4: optional Int32 Year = 2011;
 			18: optional Int32 Count = 12;
@@ -27,7 +27,7 @@ namespace Topmost.Namespace
 	}
 }
 
-schema FourthSchema extends ThirdSchema
+record FourthSchema extends ThirdSchema tagged "d889843cdeeed8d8d8d8d6834343cd32"
 {
 	4: optional Int32 Year = 2011;
 	18: optional Int32 Count = 12;

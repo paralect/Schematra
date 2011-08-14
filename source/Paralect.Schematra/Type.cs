@@ -29,7 +29,12 @@ namespace Paralect.Schematra
         /// <summary>
         /// List of aliasses
         /// </summary>
-        protected List<String> _aliases = new List<String>();
+        protected List<String> _aliases = new List<String>();        
+        
+        /// <summary>
+        /// List of aliasses
+        /// </summary>
+        protected List<String> _usings = new List<String>();
 
         /// <summary>
         /// Short name of type (without namespace prefix)
@@ -61,6 +66,14 @@ namespace Paralect.Schematra
         public ICollection<string> Aliases
         {
             get { return _aliases.AsReadOnly(); }
+        }
+
+        /// <summary>
+        /// Type context this type belongs to
+        /// </summary>
+        public TypeContext TypeContext
+        {
+            get { return _typeContext; }
         }
 
         /// <summary>
@@ -105,6 +118,14 @@ namespace Paralect.Schematra
                 throw new DuplicateTypeAliasException("Alias {0} already defined for type {1}", alias, _fullName);
 
             _aliases.Add(alias);
+        }
+
+        /// <summary>
+        /// Add usings internal
+        /// </summary>
+        protected void SetUsingsInternal(List<String> usings)
+        {
+            _usings = usings;
         }
 
         /// <summary>

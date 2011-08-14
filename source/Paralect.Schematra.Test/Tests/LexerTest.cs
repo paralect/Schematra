@@ -9,6 +9,12 @@ namespace Paralect.Schematra.Test.Tests
     public class LexerTest
     {
         [Test]
+        public void S03_Full_Context()
+        {
+            var context = GetContext(@"Data\Schemas\S03_Full.schema");
+        }
+
+        [Test]
         public void S03_Full()
         {
             var compilation = GetCompilation(@"Data\Schemas\S03_Full.schema");
@@ -117,8 +123,14 @@ namespace Paralect.Schematra.Test.Tests
 
         private CompilationDefinition GetCompilation(String path)
         {
-            var lexer = new Lexer();
+            var lexer = new Paralect.Schematra.Definitions.Lexer();
             return lexer.BuildCompilationDefinition(new[] { Path.Combine(GrammerTest.AssemblyDirectory, path) });
+        }
+
+        private TypeContext GetContext(String path)
+        {
+            var lexer = new Lexer();
+            return lexer.Build(new[] { Path.Combine(GrammerTest.AssemblyDirectory, path) });
         }
     }
 }

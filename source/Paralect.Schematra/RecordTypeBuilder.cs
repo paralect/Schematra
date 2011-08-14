@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace Paralect.Schematra
 {
@@ -46,9 +47,15 @@ namespace Paralect.Schematra
             return this;
         }
 
-        public RecordTypeBuilder AddField(Int32 index, String name, String type)
+        public RecordTypeBuilder AddField(Int32 index, String name, String type, FieldQualifier qualifier)
         {
-            AddFieldInternal(index, name, type);
+            AddFieldInternal(index, name, type, qualifier);
+            return this;
+        }
+
+        public RecordTypeBuilder SetUsings(List<String> usings)
+        {
+            SetUsingsInternal(usings);
             return this;
         }
 

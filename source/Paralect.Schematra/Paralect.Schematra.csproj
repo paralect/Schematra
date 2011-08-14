@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="Definitions\CompilationDefinition.cs" />
     <Compile Include="Definitions\EnumDefinition.cs" />
+    <Compile Include="Definitions\Lexer.cs" />
     <Compile Include="Definitions\TypeDefinition.cs" />
     <Compile Include="Definitions\UnitDefinition.cs" />
     <Compile Include="Definitions\RecordDefinition.cs" />

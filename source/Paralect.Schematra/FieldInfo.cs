@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Paralect.Schematra.Exceptions;
 
 namespace Paralect.Schematra
@@ -33,14 +34,20 @@ namespace Paralect.Schematra
         /// </summary>
         protected String _typeFullName;
 
+        protected FieldQualifier _qualifier;
+
+        protected List<String> _usings;
+
         /// <summary>
         /// Protected initialization
         /// </summary>
-        public FieldInfo(TypeContext typeContext, Int32 index, String name, String typeFullName)
+        public FieldInfo(TypeContext typeContext, Int32 index, String name, String typeFullName, FieldQualifier qualifier, List<String> usings = null)
         {
             _typeContext = typeContext;
+            _usings = usings ?? new List<String>();
             _index = index;
             _name = name;
+            _qualifier = qualifier;
             _typeFullName = typeFullName;
         }
 
@@ -63,6 +70,11 @@ namespace Paralect.Schematra
         public string TypeFullName
         {
             get { return _typeFullName; }
+        }
+
+        public FieldQualifier Qualifier
+        {
+            get { return _qualifier; }
         }
 
         /// <summary>
