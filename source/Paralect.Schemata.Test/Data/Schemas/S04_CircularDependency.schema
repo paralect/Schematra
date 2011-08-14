@@ -1,0 +1,18 @@
+﻿
+record FirstSchema tagged "8170cb805b92441eb198fb71f343b717"
+{
+	1: optional SecondSchema Second;
+	2: optional ThirdSchema Third;
+} 
+
+record SecondSchema tagged "989865545b92441eb198fb71f343b717"
+{
+	1: optional FirstSchema First;
+	2: optional ThirdSchema Third;
+} 
+
+record ThirdSchema tagged "98c987667ddd76c76d76db71f343b717"
+{
+	1: optional FirstSchema First;
+	2: optional SecondSchema Second;
+} 

@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Paralect.Schemata", "Paralect.Schemata\Paralect.Schemata.csproj", "{AD044002-1B78-4AB2-9B47-21BE328E82A6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Paralect.Schemata.Test", "Paralect.Schemata.Test\Paralect.Schemata.Test.csproj", "{975EE5F2-B033-4E51-BB4F-5FD4AB3B5A7A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AD044002-1B78-4AB2-9B47-21BE328E82A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD044002-1B78-4AB2-9B47-21BE328E82A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD044002-1B78-4AB2-9B47-21BE328E82A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD044002-1B78-4AB2-9B47-21BE328E82A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{975EE5F2-B033-4E51-BB4F-5FD4AB3B5A7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{975EE5F2-B033-4E51-BB4F-5FD4AB3B5A7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{975EE5F2-B033-4E51-BB4F-5FD4AB3B5A7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{975EE5F2-B033-4E51-BB4F-5FD4AB3B5A7A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

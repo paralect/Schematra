@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/sdo-api/src/main/java/commonj/sdo/impl
+END
+ExternalizableDelegator.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/sdo-api/src/main/java/commonj/sdo/impl/ExternalizableDelegator.java
+END
+NoHelperProviderException.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/sdo-api/src/main/java/commonj/sdo/impl/NoHelperProviderException.java
+END
+HelperProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/sdo-api/src/main/java/commonj/sdo/impl/HelperProvider.java
+END

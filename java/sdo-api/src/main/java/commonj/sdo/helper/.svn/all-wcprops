@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/sdo-api/src/main/java/commonj/sdo/helper
+END
+XMLDocument.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/sdo-api/src/main/java/commonj/sdo/helper/XMLDocument.java
+END
+XMLHelper.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/sdo-api/src/main/java/commonj/sdo/helper/XMLHelper.java
+END
+DataFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/sdo-api/src/main/java/commonj/sdo/helper/DataFactory.java
+END
+TypeHelper.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/sdo-api/src/main/java/commonj/sdo/helper/TypeHelper.java
+END
+HelperContext.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/sdo-api/src/main/java/commonj/sdo/helper/HelperContext.java
+END
+DataHelper.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/sdo-api/src/main/java/commonj/sdo/helper/DataHelper.java
+END
+CopyHelper.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/sdo-api/src/main/java/commonj/sdo/helper/CopyHelper.java
+END
+EqualityHelper.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/sdo-api/src/main/java/commonj/sdo/helper/EqualityHelper.java
+END
+XSDHelper.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/sdo-api/src/main/java/commonj/sdo/helper/XSDHelper.java
+END

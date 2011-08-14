@@ -1,0 +1,11 @@
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/sdo-api/src/test/resources/default/META-INF/services
+END
+commonj.sdo.impl.HelperProvider
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/sdo-api/src/test/resources/default/META-INF/services/commonj.sdo.impl.HelperProvider
+END

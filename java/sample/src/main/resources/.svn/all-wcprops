@@ -1,0 +1,89 @@
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/sample/src/main/resources
+END
+MedicalTest_CS.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/sample/src/main/resources/MedicalTest_CS.xsd
+END
+companyDataGraphGenerated.xml
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/sample/src/main/resources/companyDataGraphGenerated.xml
+END
+People.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/sample/src/main/resources/People.xsd
+END
+companyDataGraph.xml
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/sample/src/main/resources/companyDataGraph.xml
+END
+company.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/sample/src/main/resources/company.xsd
+END
+companyGenerated.xml
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/sample/src/main/resources/companyGenerated.xml
+END
+sports.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/sample/src/main/resources/sports.xsd
+END
+sports.xml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/sample/src/main/resources/sports.xml
+END
+companyCompleteDataGraph.xml
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/sample/src/main/resources/companyCompleteDataGraph.xml
+END
+MedicalTest.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/sample/src/main/resources/MedicalTest.xsd
+END
+po.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/sample/src/main/resources/po.xsd
+END
+letter.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/sample/src/main/resources/letter.xsd
+END
+po.xml
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/sample/src/main/resources/po.xml
+END
+letter.xml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/sample/src/main/resources/letter.xml
+END

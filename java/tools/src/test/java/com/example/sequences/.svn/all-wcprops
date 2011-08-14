@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/tools/src/test/java/com/example/sequences
+END
+MixedRepeatingChoice.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/tools/src/test/java/com/example/sequences/MixedRepeatingChoice.java
+END
+TwoRCs.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/tools/src/test/java/com/example/sequences/TwoRCs.java
+END
+SequencesFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/tools/src/test/java/com/example/sequences/SequencesFactory.java
+END
+MixedQuote.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/tools/src/test/java/com/example/sequences/MixedQuote.java
+END
+TwoRCsMixed.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/tools/src/test/java/com/example/sequences/TwoRCsMixed.java
+END
+RepeatingChoice.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/tools/src/test/java/com/example/sequences/RepeatingChoice.java
+END

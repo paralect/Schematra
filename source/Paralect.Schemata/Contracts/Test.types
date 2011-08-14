@@ -1,0 +1,22 @@
+﻿
+
+
+type SimpleContract 
+{
+	1: optional Int32 Year = 2011;
+	2: required Int32 NoInit;
+	2: required Double Score = 56.343;
+	3: repeated String Name = "Some very cool \"text\" \t\t ";
+
+	/*
+	5: repeated String Name = 2011;
+	*/
+
+	// Single line comment
+	//5: repeated String Name = 2011;
+
+} 
+
+type AnotherContract 
+{
+} 

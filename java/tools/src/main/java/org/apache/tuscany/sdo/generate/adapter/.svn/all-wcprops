@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/tools/src/main/java/org/apache/tuscany/sdo/generate/adapter
+END
+SDOGenModelGeneratorAdapterFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/tools/src/main/java/org/apache/tuscany/sdo/generate/adapter/SDOGenModelGeneratorAdapterFactory.java
+END
+SDOGenPackageGeneratorAdapter.java
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/tools/src/main/java/org/apache/tuscany/sdo/generate/adapter/SDOGenPackageGeneratorAdapter.java
+END
+SDOGenModelGeneratorAdapter.java
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/tools/src/main/java/org/apache/tuscany/sdo/generate/adapter/SDOGenModelGeneratorAdapter.java
+END
+SDOGenClassGeneratorAdapter.java
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/tools/src/main/java/org/apache/tuscany/sdo/generate/adapter/SDOGenClassGeneratorAdapter.java
+END

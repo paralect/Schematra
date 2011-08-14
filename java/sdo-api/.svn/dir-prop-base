@@ -1,0 +1,17 @@
+K 10
+svn:ignore
+V 122
+target
+*.iws
+*.ipr
+*.iml
+.project
+.classpath
+maven.log
+velocity.log*
+junit*.properties
+.settings
+.deployables
+.wtpmodules
+
+END

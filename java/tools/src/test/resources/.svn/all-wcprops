@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/tools/src/test/resources
+END
+enum.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/tools/src/test/resources/enum.xsd
+END
+sdoModel.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/tools/src/test/resources/sdoModel.xsd
+END
+twoRepeatingChoicesTestResult.xml
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/tools/src/test/resources/twoRepeatingChoicesTestResult.xml
+END
+repeatingChoice.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/tools/src/test/resources/repeatingChoice.xsd
+END
+repeatingChoiceTestResult.xml
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/tools/src/test/resources/repeatingChoiceTestResult.xml
+END
+sequences.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/tools/src/test/resources/sequences.xsd
+END
+TUSCANY1050.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/tools/src/test/resources/TUSCANY1050.xsd
+END
+twoRepeatingChoicesMixedTestResult.xml
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/tools/src/test/resources/twoRepeatingChoicesMixedTestResult.xml
+END
+mixedStaticTestResult.xml
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/tools/src/test/resources/mixedStaticTestResult.xml
+END
+mixedRepeatingChoiceTestResult.xml
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/tools/src/test/resources/mixedRepeatingChoiceTestResult.xml
+END

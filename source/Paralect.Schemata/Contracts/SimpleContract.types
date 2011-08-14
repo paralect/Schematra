@@ -1,0 +1,139 @@
+﻿using MyNamespace;
+
+namespace Mongodb.Driver
+{
+	meta BsonId
+	{
+		required Bool Clustered;
+	}
+
+	meta BsonName(Name)
+	{
+		required String Name;
+		repeated String List;
+	}
+
+	meta Identity
+	{
+		[Default]
+		requred String Id;
+	}
+
+}
+
+namespace MyNamespace.VeryGood
+{
+
+	interface
+
+	type Command[1..100]
+	{
+		type Metadata
+		{
+			
+		}
+	}
+
+	type Job_CreatedEvent implements ICommand, IHello
+	{
+		
+	}
+
+
+	type Job_CreatedEvent extends Command
+		tagged "57897d97c7ddd8d785ee" as String
+	{
+		20: required Int32 UserId;
+		21: optional String UserName;
+		22: optional String[] Emails;		
+	}
+
+	type Job_CreatedEvent 
+		extends Event
+		identified by "57897d97c7ddd8d785ee"
+		
+	{
+	}
+
+	type "3dda5067a9f84d939457" : Job_UpdatedEvent
+	{
+		
+	}
+
+	
+	type User_CreateCommand extends Command 
+		id = "3dda5067a9f84d939457"
+		reserved = 20..11, 30..37
+		occupied = 30..33
+	{
+		20: required Int32 UserId;
+		21: optional String UserName;
+		22: optional String 
+	}
+
+	type SomeCommand("3dda5067a9f84d939457") : Command
+	{
+		id = "adsfasdfadsfadf"
+	}
+
+	type Leger_AddAccountCommand("3dda5067a9f84d939457")
+	{
+		1: required String Name;
+		2: optional String PageNumber = 1;
+		3: optional Int32 ResultsPerPage;
+
+		5: historic;       // *****************************  //
+		2: historic;       // *  Note this motherfucker!  *  //
+		3: historic;       // *****************************  //
+	}
+
+	type Leger_CreatedEvent("3dda5067a9f84d939457", 1.1.2.1) : Command
+	{
+		1: required String Query;
+		2: optional String PageNumber = 1;
+		3: optional Int32 ResultsPerPage;
+		4: optional Int32 Count;
+		5: repeated String Names;
+
+		type Leger_CreatedEvent_AdditionalData("3dda5067a9f84d939457")
+		{
+			1: required String Name;
+		}
+	}
+
+	"a7c63d63e973f52dce91" : type ComplexContract
+	{
+		[BsonName(Name = "Hello", List = ("Value1", "Value2"))]
+		1: required String ThemeId;
+
+		[BsonName(Name = "Hello")]
+		2: optional Int32 Version;
+
+		[BsonName(Name = "CustomName")]
+		3: repeated SimpleContract RepeatedContract;
+		4: optional SimpleContract OptionalContract;
+	}
+
+	schema Command 
+	{
+		
+	}
+
+	schema Ledger_CreateCommand 
+		extends Command 
+		conforms IMessage, ISchemaDefinition
+	{
+	}
+
+
+	enum Days
+	{
+		1: Monday [Name = "Monday"],
+		2: Thuesday,
+		3: Wednesday,
+		4: Thuersday,
+		5: Friday,
+		6: Saturday,
+		7: Sunday,
+	}
+}

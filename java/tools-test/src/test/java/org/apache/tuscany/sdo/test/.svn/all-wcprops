@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/tools-test/src/test/java/org/apache/tuscany/sdo/test
+END
+SubstitutionWithExtensionValuesTestCase.java
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/tools-test/src/test/java/org/apache/tuscany/sdo/test/SubstitutionWithExtensionValuesTestCase.java
+END
+InheritanceTestCase.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/tools-test/src/test/java/org/apache/tuscany/sdo/test/InheritanceTestCase.java
+END
+GenPatternsTestCase.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/tools-test/src/test/java/org/apache/tuscany/sdo/test/GenPatternsTestCase.java
+END
+MixedTypesTestCase.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/tools-test/src/test/java/org/apache/tuscany/sdo/test/MixedTypesTestCase.java
+END
+DataObjectGetListTestCase.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/tools-test/src/test/java/org/apache/tuscany/sdo/test/DataObjectGetListTestCase.java
+END
+ListWithDefaultTestCase.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/tools-test/src/test/java/org/apache/tuscany/sdo/test/ListWithDefaultTestCase.java
+END
+OpenContentTestCase.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/tools-test/src/test/java/org/apache/tuscany/sdo/test/OpenContentTestCase.java
+END
+ChangeSummaryGenTestCase.java
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/tools-test/src/test/java/org/apache/tuscany/sdo/test/ChangeSummaryGenTestCase.java
+END
+InternalInElementTestCase.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/tools-test/src/test/java/org/apache/tuscany/sdo/test/InternalInElementTestCase.java
+END
+AllTests.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/tools-test/src/test/java/org/apache/tuscany/sdo/test/AllTests.java
+END
+SimpleStaticTestCase.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/tools-test/src/test/java/org/apache/tuscany/sdo/test/SimpleStaticTestCase.java
+END
+ExtensibleTestCase.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/tools-test/src/test/java/org/apache/tuscany/sdo/test/ExtensibleTestCase.java
+END

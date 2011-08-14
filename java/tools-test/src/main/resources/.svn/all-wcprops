@@ -1,0 +1,107 @@
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/tools-test/src/main/resources
+END
+substitutionWithExtensionValues.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/tools-test/src/main/resources/substitutionWithExtensionValues.xsd
+END
+subgroup1.xml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/tools-test/src/main/resources/subgroup1.xml
+END
+simple.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/tools-test/src/main/resources/simple.xsd
+END
+listAccess.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/tools-test/src/main/resources/listAccess.xsd
+END
+Open.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/tools-test/src/main/resources/Open.xsd
+END
+mixedTypesStatic.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/tools-test/src/main/resources/mixedTypesStatic.xsd
+END
+simpleNoIF.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/tools-test/src/main/resources/simpleNoIF.xsd
+END
+xsdImportOnly.wsdl
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/tools-test/src/main/resources/xsdImportOnly.wsdl
+END
+subgroup.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/tools-test/src/main/resources/subgroup.xsd
+END
+substitutionWithExtensionValues2.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/tools-test/src/main/resources/substitutionWithExtensionValues2.xsd
+END
+substitutionWithExtensionValues1.xml
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/tools-test/src/main/resources/substitutionWithExtensionValues1.xml
+END
+simpleWithChangeSummary.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/tools-test/src/main/resources/simpleWithChangeSummary.xsd
+END
+xsdlistitem.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/tools-test/src/main/resources/xsdlistitem.xsd
+END
+simpleNoTns.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/tools-test/src/main/resources/simpleNoTns.xsd
+END
+xsdImportOnly_1.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/tools-test/src/main/resources/xsdImportOnly_1.xsd
+END
+InternalInElement.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/tools-test/src/main/resources/InternalInElement.xsd
+END
+CustomerAccount.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/repos/asf/!svn/ver/834610/tuscany/sdo-java/trunk/tools-test/src/main/resources/CustomerAccount.xsd
+END

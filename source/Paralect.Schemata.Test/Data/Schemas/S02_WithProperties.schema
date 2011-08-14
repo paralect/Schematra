@@ -1,0 +1,6 @@
+﻿
+type SimpleContract 
+{
+	1: optional Int32 Year = 2011;
+	2: required Int32 NoInit;
+} 
