@@ -22,3 +22,32 @@ namespace Paralect.Schematra
         }         
     }
 }
+/*
+
+public class C1 : C2
+{
+    
+}
+
+namespace N1
+{
+    public class C2
+    {
+         
+    }
+
+    namespace N2
+    {
+        public class C3 : C2
+        {
+
+        }
+    }
+}
+
+public class C4
+{
+
+}
+
+*/

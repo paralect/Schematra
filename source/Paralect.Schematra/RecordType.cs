@@ -99,7 +99,7 @@ namespace Paralect.Schematra
             }
         }
 
-        public ReadOnlyCollection<FieldInfo> GetFields()
+        public ICollection<FieldInfo> GetFields()
         {
             return _fields.AsReadOnly();
         }

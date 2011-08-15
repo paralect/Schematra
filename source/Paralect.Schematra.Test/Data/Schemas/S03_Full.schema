@@ -1,6 +1,6 @@
 ﻿
-using Hello.Bye;
-using Hello.Bye.Goodbye;
+using Topmost.Namespace;
+using Topmost.Namespace.Inner.Namespace;
 
 record FirstSchema tagged "8170cb805b92441eb198fb71f343b717" extends SecondSchema
 {

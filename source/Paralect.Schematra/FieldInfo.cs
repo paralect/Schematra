@@ -34,18 +34,27 @@ namespace Paralect.Schematra
         /// </summary>
         protected TypeResolver _typeResolver;
 
+        /// <summary>
+        /// Field qualifier (optional or required)
+        /// </summary>
         protected FieldQualifier _qualifier;
+
+        /// <summary>
+        /// Default value of property
+        /// </summary>
+        protected Object _defaultValue;
 
         /// <summary>
         /// Protected initialization
         /// </summary>
-        public FieldInfo(TypeContext typeContext, Int32 index, String name, TypeResolver typeResolver, FieldQualifier qualifier)
+        public FieldInfo(TypeContext typeContext, Int32 index, String name, TypeResolver typeResolver, FieldQualifier qualifier, Object defaultValue)
         {
             _typeContext = typeContext;
             _index = index;
             _name = name;
             _qualifier = qualifier;
             _typeResolver = typeResolver;
+            _defaultValue = defaultValue;
         }
 
         /// <summary>
@@ -64,6 +73,9 @@ namespace Paralect.Schematra
             get { return _name; }
         }
 
+        /// <summary>
+        /// Field qualifier (optional or required)
+        /// </summary>
         public FieldQualifier Qualifier
         {
             get { return _qualifier; }
@@ -85,12 +97,24 @@ namespace Paralect.Schematra
             get { return _typeResolver; }
         }
 
+        /// <summary>
+        /// Build FieldInfo
+        /// </summary>
         public void Build()
         {
             var type = _typeResolver.Resolve(_typeContext);
 
             if (type == null)
                 throw new TypeNotFoundException("Type for field {0} is invalid", _name);
+
+            if (type is PrimitiveType && _defaultValue == null)
+            {
+                // set default value to:
+                // for numeric - 0
+                // for string - 0
+                // for array - []
+                // for boolean - false
+            }
 
             _type = type;
         }

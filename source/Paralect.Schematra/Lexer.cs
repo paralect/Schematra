@@ -48,9 +48,9 @@ namespace Paralect.Schematra
             get { return _typeContext; }
         }
 
-        public Context()
+        public Context(TypeContext typeContext)
         {
-            _typeContext = new TypeContext();
+            _typeContext = typeContext;
         }
 
         /// <summary>
@@ -76,8 +76,7 @@ namespace Paralect.Schematra
                 throw new SchematraException("Files were not specified");
 
             var typeContext = new TypeContext();
-
-            var context = new Context();
+            var context = new Context(typeContext);
 
             foreach (var filePath in filePaths)
             {

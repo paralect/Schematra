@@ -11,10 +11,7 @@ namespace Paralect.Schematra.Test.Tests
         [Test]
         public void First()
         {
-/*            var compilation = GetCompilation(@"Data\Schemas\S04_CircularDependency.schema");
 
-            var parser = new Parser(compilation);
-            var context = parser.Parse();*/
         }
 
         public void DynamicTypeCreation()

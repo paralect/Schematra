@@ -1,6 +1,6 @@
 ﻿
-type SimpleContract 
+record SimpleRecord tagged "9090cb805b92441eb198fb71f343b717"
 {
-	1: optional Int32 Year = 2011;
-	2: required Int32 NoInit;
+	1: optional Int32 Year;
+	2: required String Text;
 } 

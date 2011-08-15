@@ -1,4 +1,4 @@
 ﻿
-schema SimpleSchema 
+record SimpleSchema tagged "9090cb805b92441eb198fb71f343b717"
 {
 } 
