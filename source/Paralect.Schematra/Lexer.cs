@@ -9,9 +9,58 @@ namespace Paralect.Schematra
 {
     public class Context
     {
-        public TypeContext TypeContext { get; set; }
-        public List<String> Usings { get; set; }
-        public String Namespace { get; set; }
+        /// <summary>
+        /// Type context
+        /// </summary>
+        private TypeContext _typeContext { get; set; }
+
+        /// <summary>
+        /// List of usings
+        /// </summary>
+        private readonly List<String> _usings = new List<String>();
+
+        /// <summary>
+        /// Precached value of usings
+        /// </summary>
+        private String[] _usingsArray;
+
+        /// <summary>
+        /// Usings array
+        /// </summary>
+        public String[] Usings
+        {
+            get
+            {
+                if (_usingsArray == null)
+                {
+                    _usingsArray = _usings.ToArray();
+                }
+
+                return _usingsArray;
+            }
+        }
+
+        /// <summary>
+        /// Type context
+        /// </summary>
+        public TypeContext TypeContext
+        {
+            get { return _typeContext; }
+        }
+
+        public Context()
+        {
+            _typeContext = new TypeContext();
+        }
+
+        /// <summary>
+        /// Add using type full name
+        /// </summary>
+        /// <param name="usingFullName"></param>
+        public void AddUsing(String usingFullName)
+        {
+            _usings.Add(usingFullName);
+        }
     }
 
     public class Lexer
@@ -28,11 +77,7 @@ namespace Paralect.Schematra
 
             var typeContext = new TypeContext();
 
-            var context = new Context()
-            {
-                TypeContext = typeContext,
-                Usings = new List<String>()
-            };
+            var context = new Context();
 
             foreach (var filePath in filePaths)
             {
@@ -97,7 +142,7 @@ namespace Paralect.Schematra
                 switch (child.Term.Name)
                 {
                     case SchematraGrammer.term_using_def_name:
-                        context.Usings.Add(child.Token.ValueString);
+                        context.AddUsing(child.Token.ValueString);
                         break;
                 }
             }                
@@ -174,7 +219,7 @@ namespace Paralect.Schematra
                         break;
 
                     case SchematraGrammer.term_schema_def_options:
-                        ParseSchemaDefOptions(child, recordBuilder);
+                        ParseSchemaDefOptions(child, context, recordBuilder);
                         break;
 
                     case SchematraGrammer.term_schema_def_body:
@@ -195,13 +240,13 @@ namespace Paralect.Schematra
                 switch (child.Term.Name)
                 {
                     case SchematraGrammer.term_field:
-                        ParseField(child, recordBuilder);
+                        ParseField(child, context, recordBuilder);
                         break;
                 }
             }            
         }
 
-        private void ParseSchemaDefOptions(ParseTreeNode node, RecordTypeBuilder recordBuilder)
+        private void ParseSchemaDefOptions(ParseTreeNode node, Context context, RecordTypeBuilder recordBuilder)
         {
             _currentNode = node;
 
@@ -213,13 +258,13 @@ namespace Paralect.Schematra
                 switch (child.Term.Name)
                 {
                     case SchematraGrammer.term_schema_def_option:
-                        ParseSchemaDefOption(child, recordBuilder);
+                        ParseSchemaDefOption(child, context, recordBuilder);
                         break;
                 }
             }            
         }
 
-        private void ParseSchemaDefOption(ParseTreeNode node, RecordTypeBuilder recordBuilder)
+        private void ParseSchemaDefOption(ParseTreeNode node, Context context, RecordTypeBuilder recordBuilder)
         {
             _currentNode = node;
 
@@ -231,13 +276,13 @@ namespace Paralect.Schematra
                         ParseSchemaDefTaggedOption(child, recordBuilder);
                         break;
                     case SchematraGrammer.term_schema_def_extends_option:
-                        ParseSchemaDefExtendsOption(child, recordBuilder);
+                        ParseSchemaDefExtendsOption(child, context, recordBuilder);
                         break;
                 }
             }
         }
 
-        private void ParseSchemaDefExtendsOption(ParseTreeNode node, RecordTypeBuilder recordBuilder)
+        private void ParseSchemaDefExtendsOption(ParseTreeNode node, Context context, RecordTypeBuilder recordBuilder)
         {
             _currentNode = node;
 
@@ -246,7 +291,7 @@ namespace Paralect.Schematra
                 switch (child.Term.Name)
                 {
                     case SchematraGrammer.term_schema_def_extends:
-                        recordBuilder.SetBaseType(child.Token.ValueString);
+                        recordBuilder.SetBaseType(new TypeResolver(child.Token.ValueString, context.Usings));
                         break;
                 }
             }            
@@ -272,7 +317,7 @@ namespace Paralect.Schematra
         /// <summary>
         /// Parsing of field nonterm
         /// </summary>
-        private void ParseField(ParseTreeNode node, RecordTypeBuilder recordBuilder)
+        private void ParseField(ParseTreeNode node, Context context, RecordTypeBuilder recordBuilder)
         {
             _currentNode = node;
 
@@ -313,30 +358,8 @@ namespace Paralect.Schematra
                 }
             }
 
-            recordBuilder.AddField(index, name, typeName, qualifier);
+            recordBuilder.AddField(index, name, new TypeResolver(typeName, context.Usings), qualifier);
         }
-
-        /// <summary>
-        /// Parsing of schema-def-body nonterm
-        /// </summary>
-        private void ParseSchemaDefBody(ParseTreeNode node, RecordDefinition schemadef)
-        {
-            _currentNode = node;
-
-            foreach (var child in node.ChildNodes)
-            {
-                switch (child.Term.Name)
-                {
-                    case SchematraGrammer.term_field:
-                        var fieldDefinition = new FieldDefinition();
-                        //ParseField(child, fieldDefinition);
-                        schemadef.FieldDefinitions.Add(fieldDefinition);
-                        break;
-                }
-            }
-        }
-
-
 
         /// <summary>
         /// Set qualifier by string 

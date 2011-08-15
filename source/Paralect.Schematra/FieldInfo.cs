@@ -32,23 +32,20 @@ namespace Paralect.Schematra
         /// <summary>
         /// Field type full name
         /// </summary>
-        protected String _typeFullName;
+        protected TypeResolver _typeResolver;
 
         protected FieldQualifier _qualifier;
-
-        protected List<String> _usings;
 
         /// <summary>
         /// Protected initialization
         /// </summary>
-        public FieldInfo(TypeContext typeContext, Int32 index, String name, String typeFullName, FieldQualifier qualifier, List<String> usings = null)
+        public FieldInfo(TypeContext typeContext, Int32 index, String name, TypeResolver typeResolver, FieldQualifier qualifier)
         {
             _typeContext = typeContext;
-            _usings = usings ?? new List<String>();
             _index = index;
             _name = name;
             _qualifier = qualifier;
-            _typeFullName = typeFullName;
+            _typeResolver = typeResolver;
         }
 
         /// <summary>
@@ -67,11 +64,6 @@ namespace Paralect.Schematra
             get { return _name; }
         }
 
-        public string TypeFullName
-        {
-            get { return _typeFullName; }
-        }
-
         public FieldQualifier Qualifier
         {
             get { return _qualifier; }
@@ -85,12 +77,20 @@ namespace Paralect.Schematra
             get { return _type; }
         }
 
+        /// <summary>
+        /// Field type full name
+        /// </summary>
+        public TypeResolver TypeResolver
+        {
+            get { return _typeResolver; }
+        }
+
         public void Build()
         {
-            var type = _typeContext.GetByFullName(_typeFullName);
+            var type = _typeResolver.Resolve(_typeContext);
 
             if (type == null)
-                throw new SchematraException("Type for field {0} is invalid", _name);
+                throw new TypeNotFoundException("Type for field {0} is invalid", _name);
 
             _type = type;
         }

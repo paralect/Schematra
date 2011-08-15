@@ -13,9 +13,9 @@ namespace Paralect.Schematra
         protected Guid _tag;
 
         /// <summary>
-        /// Record base type
+        /// Base type resolver
         /// </summary>
-        protected string _baseTypeName;
+        protected TypeResolver _baseTypeResolver;
 
         /// <summary>
         /// Cached record base type
@@ -52,14 +52,7 @@ namespace Paralect.Schematra
         /// </summary>
         public Type BaseType
         {
-            get
-            {
-                if (_baseTypeName == null)
-                    return null;
-
-
-                return _baseType;
-            }
+            get { return _baseType; }
         }
 
         protected RecordType(TypeContext typeContext) : base(typeContext)
@@ -74,12 +67,12 @@ namespace Paralect.Schematra
         {
             var recordType = new RecordType(_typeContext);
             CopyInternal(recordType);
-            recordType._baseTypeName = _baseTypeName;
+            recordType._baseTypeResolver = _baseTypeResolver;
             recordType._tag = _tag;
 
             foreach (var fieldInfo in _fields)
             {
-                recordType.AddFieldInternal(fieldInfo.Index, fieldInfo.Name, fieldInfo.TypeFullName, fieldInfo.Qualifier);
+                recordType.AddFieldInternal(fieldInfo.Index, fieldInfo.Name, fieldInfo.TypeResolver, fieldInfo.Qualifier);
             }
 
             return recordType;
@@ -88,13 +81,9 @@ namespace Paralect.Schematra
         public override void Build()
         {
             // if record base type was specified
-            if (_baseTypeName != null)
+            if (_baseTypeResolver != null)
             {
-                var recordBaseType = _typeContext.GetByFullName(_baseTypeName);
-
-                // throw if type wasn't found
-                if (recordBaseType == null)
-                    throw new TypeNotFoundException("There is no type {0}", _baseTypeName);
+                var recordBaseType = _baseTypeResolver.Resolve(_typeContext);
 
                 // Extension allowed only for rectords
                 if (!(recordBaseType is RecordType))
@@ -125,7 +114,7 @@ namespace Paralect.Schematra
             return _fieldsByIndex[index];
         }
 
-        protected void AddFieldInternal(Int32 index, String name, String type, FieldQualifier qualifier)
+        protected void AddFieldInternal(Int32 index, String name, TypeResolver typeResolver, FieldQualifier qualifier)
         {
             if (_fieldsByName.ContainsKey(name))
                 throw new DuplicateFieldNameException("Duplicate field {0} found for record {1}", name, FullName);
@@ -133,7 +122,7 @@ namespace Paralect.Schematra
             if (_fieldsByIndex.ContainsKey(index))
                 throw new DuplicateFieldIndexException("Duplicate field index {0} found for record {1}", index, FullName);
 
-            var fieldInfo = new FieldInfo(_typeContext, index, name, type, qualifier);
+            var fieldInfo = new FieldInfo(_typeContext, index, name, typeResolver, qualifier);
 
             _fields.Add(fieldInfo);
             _fieldsByName[fieldInfo.Name] = fieldInfo;

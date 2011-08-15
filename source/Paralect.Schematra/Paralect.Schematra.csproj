@@ -80,6 +80,7 @@
     <Compile Include="SDO\IProperty.cs" />
     <Compile Include="SDO\ISequence.cs" />
     <Compile Include="SDO\IType.cs" />
+    <Compile Include="TypeResolver.cs" />
     <Compile Include="Utils.cs" />
   </ItemGroup>
   <ItemGroup>

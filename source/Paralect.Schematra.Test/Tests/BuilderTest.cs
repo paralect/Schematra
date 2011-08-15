@@ -132,13 +132,13 @@ namespace Paralect.Schematra.Test.Tests
             Assert.That(field1.Index, Is.EqualTo(1));
             Assert.That(field1.Name, Is.EqualTo("Name"));
             Assert.That(field1.Type, Is.EqualTo(firstType));
-            Assert.That(field1.TypeFullName, Is.EqualTo("SomeNamespace.First"));
+            Assert.That(field1.Type.FullName, Is.EqualTo("SomeNamespace.First"));
 
             var field2 = firstType.GetField(2);
             Assert.That(field2.Index, Is.EqualTo(2));
             Assert.That(field2.Name, Is.EqualTo("Year"));
             Assert.That(field2.Type, Is.EqualTo(firstType));
-            Assert.That(field2.TypeFullName, Is.EqualTo("SomeNamespace.First"));  
+            Assert.That(field2.Type.FullName, Is.EqualTo("SomeNamespace.First"));  
         }
 
         [Test]

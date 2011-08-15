@@ -41,15 +41,29 @@ namespace Paralect.Schematra
         /// <summary>
         /// Define base record type
         /// </summary>
-        public RecordTypeBuilder SetBaseType(String typeName)
+        public RecordTypeBuilder SetBaseType(String baseType)
         {
-            _baseTypeName = typeName;
+            _baseTypeResolver = new TypeResolver(baseType);
+            return this;
+        }
+        /// <summary>
+        /// Define base record type
+        /// </summary>
+        public RecordTypeBuilder SetBaseType(TypeResolver baseTypeResolver)
+        {
+            _baseTypeResolver = baseTypeResolver;
             return this;
         }
 
-        public RecordTypeBuilder AddField(Int32 index, String name, String type, FieldQualifier qualifier)
+        public RecordTypeBuilder AddField(Int32 index, String name, TypeResolver typeResolver, FieldQualifier qualifier)
         {
-            AddFieldInternal(index, name, type, qualifier);
+            AddFieldInternal(index, name, typeResolver, qualifier);
+            return this;
+        }
+
+        public RecordTypeBuilder AddField(Int32 index, String name, String typeName, FieldQualifier qualifier)
+        {
+            AddFieldInternal(index, name, new TypeResolver(typeName), qualifier);
             return this;
         }
 

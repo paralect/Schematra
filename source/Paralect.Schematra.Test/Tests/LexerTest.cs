@@ -12,6 +12,8 @@ namespace Paralect.Schematra.Test.Tests
         public void S03_Full_Context()
         {
             var context = GetContext(@"Data\Schemas\S03_Full.schema");
+
+
         }
 
         [Test]
