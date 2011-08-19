@@ -55,15 +55,15 @@ namespace Paralect.Schematra
             return this;
         }
 
-        public RecordTypeBuilder AddField(Int32 index, String name, TypeResolver typeResolver, FieldQualifier qualifier)
+        public RecordTypeBuilder AddField(Int32 index, String name, TypeResolver typeResolver, FieldQualifier qualifier, Object defaultValue)
         {
-            AddFieldInternal(index, name, typeResolver, qualifier);
+            AddFieldInternal(index, name, typeResolver, qualifier, defaultValue);
             return this;
         }
 
-        public RecordTypeBuilder AddField(Int32 index, String name, String typeName, FieldQualifier qualifier)
+        public RecordTypeBuilder AddField(Int32 index, String name, String typeName, FieldQualifier qualifier, Object defaultValue)
         {
-            AddFieldInternal(index, name, new TypeResolver(typeName), qualifier);
+            AddFieldInternal(index, name, new TypeResolver(typeName), qualifier, defaultValue);
             return this;
         }
 

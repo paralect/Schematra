@@ -14,7 +14,7 @@ namespace Topmost.Namespace
 	{
 		1: optional Int32 Year = 2011;
 		2: optional Int32 Count = 12;
-		3: historic Double Rate;
+		3: optional Double Rate;
 	} 
 
 	namespace Inner.Namespace	

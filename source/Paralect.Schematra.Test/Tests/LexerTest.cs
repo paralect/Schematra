@@ -69,12 +69,13 @@ namespace Paralect.Schematra.Test.Tests
                 Assert.AreEqual(FieldQualifier.Optional, field1.Qualifier);
                 Assert.AreEqual("Int32", field1.Type.Name);
                 Assert.AreEqual("Year", field1.Name);
+                Assert.AreEqual(2011, field1.DefaultValue);
 
                 var field2 = recordType.GetField(2);
                 Assert.AreEqual(2, field2.Index);
                 Assert.AreEqual(FieldQualifier.Required, field2.Qualifier);
                 Assert.AreEqual("String", field2.Type.Name);
-                Assert.AreEqual("Name", field2.Name);
+                Assert.AreEqual("Hello", field2.DefaultValue);
             }
 
             // Second schema
@@ -100,7 +101,7 @@ namespace Paralect.Schematra.Test.Tests
 
                 var field3 = schema.GetField(3);
                 Assert.AreEqual(3, field3.Index);
-                Assert.AreEqual(FieldQualifier.Historic, field3.Qualifier);
+                Assert.AreEqual(FieldQualifier.Optional, field3.Qualifier);
                 Assert.AreEqual("Double", field3.Type.Name);
                 Assert.AreEqual("Rate", field3.Name);
             }

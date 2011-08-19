@@ -97,6 +97,11 @@ namespace Paralect.Schematra
             get { return _typeResolver; }
         }
 
+        public Object DefaultValue
+        {
+            get { return _defaultValue;  }
+        }
+
         /// <summary>
         /// Build FieldInfo
         /// </summary>
@@ -107,13 +112,80 @@ namespace Paralect.Schematra
             if (type == null)
                 throw new TypeNotFoundException("Type for field {0} is invalid", _name);
 
+
+
             if (type is PrimitiveType && _defaultValue == null)
             {
+                if (type.FullName == "Int16")
+                    _defaultValue = default(Int16);
+
+                if (type.FullName == "Int32")
+                    _defaultValue = default(Int32);
+
+                if (type.FullName == "Int64")
+                    _defaultValue = default(Int64);
+
+                if (type.FullName == "Byte")
+                    _defaultValue = default(Byte);
+
+                if (type.FullName == "Float")
+                    _defaultValue = default(Single);
+
+                if (type.FullName == "Double")
+                    _defaultValue = default(Double);
+
+                if (type.FullName == "Boolean")
+                    _defaultValue = default(Boolean); // false
+
+                if (type.FullName == "String")
+                    _defaultValue = String.Empty;
+
+                if (type.FullName == "Guid")
+                    _defaultValue = Guid.Empty;
+
                 // set default value to:
                 // for numeric - 0
                 // for string - 0
                 // for array - []
                 // for boolean - false
+            }
+
+            if (type is PrimitiveType && _defaultValue != null)
+            {
+                if (type.FullName == "Int16")
+                    _defaultValue = Convert.ToInt16(_defaultValue);
+
+                if (type.FullName == "Int32")
+                    _defaultValue = Convert.ToInt32(_defaultValue);
+
+                if (type.FullName == "Int64")
+                    _defaultValue = Convert.ToInt64(_defaultValue);
+
+                if (type.FullName == "Byte")
+                    _defaultValue = Convert.ToByte(_defaultValue);
+
+                if (type.FullName == "Float")
+                    _defaultValue = Convert.ToSingle(_defaultValue);
+
+                if (type.FullName == "Double")
+                    _defaultValue = Convert.ToDouble(_defaultValue);
+
+                if (type.FullName == "String")
+                    _defaultValue = Convert.ToString(_defaultValue);
+
+                if (type.FullName == "Boolean")
+                {
+                    var text = Convert.ToString(_defaultValue);
+
+                    if (String.CompareOrdinal(text, "true") == 0 ||
+                        String.CompareOrdinal(text, "True") == 0)
+                        _defaultValue = true;
+
+                    _defaultValue = false;
+                }
+
+                if (type.FullName == "Guid")
+                    _defaultValue = Guid.Parse(Convert.ToString(_defaultValue));
             }
 
             _type = type;

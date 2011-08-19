@@ -26,8 +26,8 @@ namespace Paralect.Schematra
         /// </summary>
         public TypeContext()
         {
-            // An 8-bit signed integer
-            AddType(new PrimitiveTypeBuilder(this).SetName("Byte").AddAlias("byte").AddAlias("int8").AddAlias("i8").Create());
+            // An 8-bit unsigned integer (byte)
+            AddType(new PrimitiveTypeBuilder(this).SetName("Byte").AddAlias("byte").Create());
 
             // A 16-bit signed integer
             AddType(new PrimitiveTypeBuilder(this).SetName("Int16").AddAlias("int16").AddAlias("i16").Create());
@@ -52,6 +52,12 @@ namespace Paralect.Schematra
 
             // Do we need this if we have "byte" and we can specify byte[]? 
             AddType(new PrimitiveTypeBuilder(this).SetName("Binary").AddAlias("binary").AddAlias("Bytes").AddAlias("bytes").Create());
+
+            // GUID or UUID (128 bit value)
+            AddType(new PrimitiveTypeBuilder(this).SetName("Guid").AddAlias("guid").AddAlias("Uuid").AddAlias("uuid").Create());
+
+            // UID (96 bit value)
+            AddType(new PrimitiveTypeBuilder(this).SetName("Uid").AddAlias("uid").Create());
         }
 
         /// <summary>

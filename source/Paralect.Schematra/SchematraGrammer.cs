@@ -83,7 +83,7 @@ namespace Paralect.Schematra
                                                fieldName + fieldInitValue + ";";
 
             fieldInitValue.Rule             = (ToTerm("=") + value) | Empty;
-            fieldQualifier.Rule             = ToTerm("optional") | "required" | "repeated" | "historic";
+            fieldQualifier.Rule             = ToTerm("optional") | "required";
 
 
             // ************** //

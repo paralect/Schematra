@@ -324,6 +324,7 @@ namespace Paralect.Schematra
             FieldQualifier qualifier = FieldQualifier.Optional;
             String typeName = "";
             String name = "";
+            Object defaultValue = null;
 
             foreach (var child in node.ChildNodes)
             {
@@ -353,11 +354,16 @@ namespace Paralect.Schematra
                         break;
 
                     case SchematraGrammer.term_field_init_value:
+
+                        // yes, too cryptic
+                        if (child.ChildNodes.Count > 0 && child.ChildNodes[0].ChildNodes.Count > 0)
+                            defaultValue = child.ChildNodes[0].ChildNodes[0].Token.Value;
+                        
                         break;
                 }
             }
 
-            recordBuilder.AddField(index, name, new TypeResolver(typeName, context.Usings), qualifier);
+            recordBuilder.AddField(index, name, new TypeResolver(typeName, context.Usings), qualifier, defaultValue);
         }
 
         /// <summary>
